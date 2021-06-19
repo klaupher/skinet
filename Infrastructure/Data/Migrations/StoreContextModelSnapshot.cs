@@ -13,7 +13,7 @@ namespace Infrastructure.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.6");
+                .HasAnnotation("ProductVersion", "3.1.1");
 
             modelBuilder.Entity("Core.Entities.Product", b =>
                 {
