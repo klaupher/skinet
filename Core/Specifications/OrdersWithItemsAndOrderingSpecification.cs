@@ -1,5 +1,8 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using Core.Entities.OrderAggregate;
 
 namespace Core.Specifications
@@ -13,11 +16,10 @@ namespace Core.Specifications
             AddOrderByDescending(o => o.OrderDate);
         }
 
-        public OrdersWithItemsAndOrderingSpecification(int id, string email) 
+        public OrdersWithItemsAndOrderingSpecification(int id, string email)
             : base(o => o.Id == id && o.BuyerEmail == email)
         {
-            AddInclude(o => o.OrderItems);
-            AddInclude(o => o.DeliveryMethod);
+            
         }
     }
 }

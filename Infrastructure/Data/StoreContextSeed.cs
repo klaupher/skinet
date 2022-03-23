@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Core.Entities;
@@ -17,12 +16,10 @@ namespace Infrastructure.Data
         {
             try
             {
-                var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-
                 if (!context.ProductBrands.Any())
                 {
                     var brandsData =
-                        File.ReadAllText(path + @"/Data/SeedData/brands.json");
+                        File.ReadAllText("../Infrastructure/Data/SeedData/brands.json");
 
                     var brands = JsonSerializer.Deserialize<List<ProductBrand>>(brandsData);
 
@@ -37,7 +34,7 @@ namespace Infrastructure.Data
                 if (!context.ProductTypes.Any())
                 {
                     var typesData =
-                        File.ReadAllText(path + @"/Data/SeedData/types.json");
+                        File.ReadAllText("../Infrastructure/Data/SeedData/types.json");
 
                     var types = JsonSerializer.Deserialize<List<ProductType>>(typesData);
 
@@ -52,7 +49,7 @@ namespace Infrastructure.Data
                 if (!context.Products.Any())
                 {
                     var productsData =
-                        File.ReadAllText(path + @"/Data/SeedData/products.json");
+                        File.ReadAllText("../Infrastructure/Data/SeedData/products.json");
 
                     var products = JsonSerializer.Deserialize<List<Product>>(productsData);
 
@@ -63,11 +60,10 @@ namespace Infrastructure.Data
 
                     await context.SaveChangesAsync();
                 }
-
                 if (!context.DeliveryMethods.Any())
                 {
                     var dmData =
-                        File.ReadAllText(path + @"/Data/SeedData/delivery.json");
+                        File.ReadAllText("../Infrastructure/Data/SeedData/delivery.json");
 
                     var methods = JsonSerializer.Deserialize<List<DeliveryMethod>>(dmData);
 

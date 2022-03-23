@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Core.Entities;
 using Core.Interfaces;
@@ -10,6 +12,7 @@ namespace Infrastructure.Data
     {
         private readonly StoreContext _context;
         private Hashtable _repositories;
+
         public UnitOfWork(StoreContext context)
         {
             _context = context;
@@ -27,7 +30,7 @@ namespace Infrastructure.Data
 
         public IGenericRepository<TEntity> Repository<TEntity>() where TEntity : BaseEntity
         {
-            if(_repositories == null) _repositories = new Hashtable();
+            if (_repositories == null) _repositories = new Hashtable();
 
             var type = typeof(TEntity).Name;
 
